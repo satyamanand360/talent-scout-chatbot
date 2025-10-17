@@ -2,6 +2,8 @@
 ## Project Overview
 TalentScout is an intelligent chatbot designed to conduct initial screenings of candidates for a technology recruitment agency. It automates the first steps of the hiring process by gathering essential candidate information and generating relevant technical questions based on their declared tech stack. The application is built with Python and Streamlit and is powered by the Llama 3.1 LLM via the Groq API for real-time, responsive interactions.
 
+Link of the deployment: https://talent-scout-chatbot-2025.streamlit.app/
+
 How to run ?
 
 git clone [Your GitHub Repository Link Here]
