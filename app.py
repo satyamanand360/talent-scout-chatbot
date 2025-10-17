@@ -34,33 +34,71 @@ Your tasks are:
 # --- UI Enhancements --- 🎨
 st.set_page_config(page_title="TalentScout AI", page_icon="🤖")
 
+# This is the new, more advanced CSS block for styling
 st.markdown("""
     <style>
-        .st-emotion-cache-1v0mbdj > img { 
-            display: none;
-        }
+        /* General body styling */
         .st-emotion-cache-16txtl3 {
             padding-top: 2rem;
         }
-        div[data-testid="stChatMessage"] { 
-            background-color: #f0f2f6;
-            border-radius: 10px;
-            padding: 10px 12px;
-            border: 1px solid #e0e0e0;
+
+        /* Container for each chat message */
+        div[data-testid="stChatMessage"] {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
         }
-        div[data-testid="stChatMessage"] p {
+
+        /* Style for the Assistant's message bubble */
+        div[data-testid="stChatMessage"]:has(div[data-testid="stAvatarIcon-assistant"]) {
+            justify-content: flex-start;
+        }
+        
+        div[data-testid="stChatMessage"]:has(div[data-testid="stAvatarIcon-assistant"]) div[data-testid="stMarkdownContainer"] {
+            background-color: #f0f2f6;
+            color: #333;
+            border-radius: 20px 20px 20px 5px;
+            padding: 10px 15px;
+            margin-left: 10px;
+            max-width: 80%;
+        }
+
+        /* Style for the User's message bubble */
+        div[data-testid="stChatMessage"]:has(div[data-testid="stAvatarIcon-user"]) {
+            justify-content: flex-end; /* This aligns the whole container to the right */
+        }
+
+        div[data-testid="stChatMessage"]:has(div[data-testid="stAvatarIcon-user"]) div[data-testid="stMarkdownContainer"] {
+            background-color: #0084ff; /* A nice blue for the user */
+            color: white;
+            border-radius: 20px 20px 5px 20px;
+            padding: 10px 15px;
+            margin-right: 10px;
+            max-width: 80%;
+        }
+        
+        /* Ensure text inside user bubble is white */
+        div[data-testid="stChatMessage"]:has(div[data-testid="stAvatarIcon-user"]) p,
+        div[data-testid="stChatMessage"]:has(div[data-testid="stAvatarIcon-user"]) li {
+            color: white;
+        }
+
+        /* Ensure text inside assistant bubble is dark */
+        div[data-testid="stChatMessage"]:has(div[data-testid="stAvatarIcon-assistant"]) p,
+        div[data-testid="stChatMessage"]:has(div[data-testid="stAvatarIcon-assistant"]) li {
             color: #333;
         }
     </style>
 """, unsafe_allow_html=True)
 
-# --- "About Me" Sidebar (New Section) ---
+
+# --- "About Me" Sidebar ---
 with st.sidebar:
     st.header("About Me")
     st.info(
         """
-        Satyam Anand,
-        
+        **Satyam Anand**
+
         I am a data and machine learning enthusiast with a passion for 
         Natural Language Processing (NLP) and Large Language Models (LLMs).
 
@@ -68,7 +106,6 @@ with st.sidebar:
         Technology, Kharagpur, specializing in Signal Processing and Machine Learning.
         """
     )
-# --- End of New Section ---
 
 # App Header
 st.title("TalentScout AI 🤖")
